@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-restore-myapp
+spec:
+  template:
+    spec:
+      containers:
+        - name: db-backup
+          image: kristianwindsor/db-backup
+          env:
+            - name: ACTION
+              value: "restore"
+            - name: DEBUG_MODE
+              value: "false"
+          envFrom:
+            - configMapRef:
+                name: db-backup-myapp
+            - secretRef:
+                name: db-backup-myapp
+      restartPolicy: Never

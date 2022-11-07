@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-backup-myapp
+data:
+  # file
+  FILE_NAME: "myapp"
+  # db
+  DB_ENGINE: "mysql"
+  DB_HOST: "myapp-db" # name of k8s service for db
+  DB_PORT: "3306"
+  DB_USERNAME: "root"
+  DB_NAME: "mydb"
+  # aws
+  AWS_DEFAULT_REGION: "us-west-1"
+  S3_BUCKET_NAME: "mybucket"
