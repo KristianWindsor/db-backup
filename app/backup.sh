@@ -15,3 +15,10 @@ fi
 
 # upload to s3
 aws s3 cp $FILE_NAME s3://$S3_BUCKET_NAME/
+
+# done
+set +x
+FILE_SIZE=$(ls -lh | grep $FILE_NAME | awk -F " " {'print $5'})
+echo -e "${GREEN}All done! ${NO_COLOR}"
+echo -e "${GREEN}    File size: ${FILE_SIZE}${NO_COLOR}"
+echo -e "${GREEN}    File location: s3://${S3_BUCKET_NAME}/${FILE_NAME}${NO_COLOR}"

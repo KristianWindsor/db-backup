@@ -19,3 +19,7 @@ elif [[ $DB_ENGINE == *"postgres"* ]]; then
     set -x
     psql -h $DB_HOST -p $DB_PORT -U $DB_USERNAME -d $DB_NAME < $FILE_NAME
 fi
+
+# done
+set +x
+echo -e "${GREEN}All done! ${NO_COLOR}"

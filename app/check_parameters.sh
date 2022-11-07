@@ -6,6 +6,7 @@
 # color codes
 RED='\033[0;31m'
 YELLOW='\033[33m'
+GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 # error: undefined
 param_undefined_error() {
