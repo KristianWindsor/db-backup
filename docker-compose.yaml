@@ -5,6 +5,7 @@ services:
     environment:
     # env
       - DEBUG_MODE=true
+      - ACTION=
     # file
       - FILE_NAME=
     # db

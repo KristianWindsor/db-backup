@@ -45,6 +45,18 @@ param_invalid_error() {
 if [[ $DEBUG_MODE == "true" ]]; then
     echo "Debug mode is on. Parameter errors will be ignored and the container will be kept alive."
 fi
+# action
+if [ -z "$ACTION" ]; then
+    WARN_MSG="Using default action: backup"
+    param_undefined_warning "ACTION" "$WARN_MSG"
+    export ACTION="backup"
+else
+    export ACTION=$(echo "$ACTION" | tr '[:upper:]' '[:lower:]')
+    if [[ $ACTION != "backup" ]] && [[ $ACTION != "restore" ]]; then
+        ERR_MSG='$ACTION should be "backup" or "restore"'
+        param_invalid_error "ACTION" "$ACTION" "$ERR_MSG"
+    fi
+fi
 # file name
 if [ -z "$FILE_NAME" ]; then
     if [ -z "$DB_NAME" ]; then
