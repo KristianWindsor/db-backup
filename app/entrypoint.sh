@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# check parameters
+source ./check_parameters.sh
+
 # create backup
 if [[ $DB_ENGINE == *"mysql"* ]]; then
     FILE_NAME="$FILE_NAME-$(date '+%Y-%m-%d').sql"
