@@ -2,6 +2,14 @@ version: "3.8"
 services:
   db-backup:
     build: .
+    environment:
+      - FILE_NAME=mybackup
+      - DB_ENGINE=mysql
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=pass
+      - DB_NAME=mydb
     volumes:
       - ./app/:/app/
     restart: always
