@@ -19,5 +19,7 @@ fi
 # upload to s3
 aws s3 cp $FILE_NAME s3://$S3_BUCKET_NAME/
 
-# keep alive
-while true; do sleep 10000; done
+# keep alive in debug mode
+if [[ $DEBUG_MODE == "true" ]]; then
+    while true; do sleep 10000; done
+fi

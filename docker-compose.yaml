@@ -3,17 +3,22 @@ services:
   db-backup:
     build: .
     environment:
-      - FILE_NAME=mybackup
-      - DB_ENGINE=mysql
-      - DB_HOST=127.0.0.1
-      - DB_PORT=3306
-      - DB_USERNAME=root
-      - DB_PASSWORD=pass
-      - DB_NAME=mydb
+    # env
+      - DEBUG_MODE=true
+    # file
+      - FILE_NAME=
+    # db
+      - DB_ENGINE=
+      - DB_HOST=
+      - DB_PORT=
+      - DB_USERNAME=
+      - DB_PASSWORD=
+      - DB_NAME=
+    # aws
       - AWS_ACCESS_KEY_ID=
       - AWS_SECRET_ACCESS_KEY=
-      - AWS_DEFAULT_REGION=us-west-1
-      - S3_BUCKET_NAME=mybucket
+      - AWS_DEFAULT_REGION=
+      - S3_BUCKET_NAME=
     volumes:
       - ./app/:/app/
     restart: always

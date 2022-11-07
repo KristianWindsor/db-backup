@@ -11,7 +11,9 @@ NO_COLOR='\033[0m'
 param_undefined_error() {
     VAR_NAME=$1
     echo -e "${RED}Error: \$${VAR_NAME} is undefined${NO_COLOR}"
-    exit 1
+    if [[ $DEBUG_MODE != "true" ]]; then
+        exit 1
+    fi
 }
 # warning: undefined
 param_undefined_warning() {
@@ -31,12 +33,18 @@ param_invalid_error() {
     if [ -n "$ERR_MSG" ]; then
         echo -e "${RED}    ${ERR_MSG}${NO_COLOR}"
     fi
-    exit 1
+    if [[ $DEBUG_MODE != "true" ]]; then
+        exit 1
+    fi
 }
 
 # ---------------- #
 # Check Parameters #
 # ---------------- #
+# debug mode
+if [[ $DEBUG_MODE == "true" ]]; then
+    echo "Debug mode is on. Parameter errors will be ignored and the container will be kept alive."
+fi
 # file name
 if [ -z "$FILE_NAME" ]; then
     if [ -z "$DB_NAME" ]; then
