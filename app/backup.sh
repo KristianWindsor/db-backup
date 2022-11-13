@@ -10,7 +10,7 @@ elif [[ $DB_ENGINE == *"postgres"* ]]; then
     FILE_NAME="$FILE_NAME-$(date '+%Y-%m-%d').dump"
     export PGPASSWORD="$DB_PASSWORD"
     set -x
-    pg_dump -h $DB_HOST -p $DB_PORT -Fc -o -U $DB_USERNAME $DB_NAME > $FILE_NAME
+    pg_dump -h $DB_HOST -p $DB_PORT -Fc -U $DB_USERNAME $DB_NAME > $FILE_NAME
 fi
 
 # upload to s3
