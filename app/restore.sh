@@ -17,7 +17,7 @@ if [[ $DB_ENGINE == *"mysql"* ]]; then
 elif [[ $DB_ENGINE == *"postgres"* ]]; then
     export PGPASSWORD="$DB_PASSWORD"
     set -x
-    psql -h $DB_HOST -p $DB_PORT -U $DB_USERNAME -d $DB_NAME < $FILE_NAME
+    pg_restore --clean -h $DB_HOST -p $DB_PORT -U $DB_USERNAME -d $DB_NAME $FILE_NAME
 fi
 
 # done
