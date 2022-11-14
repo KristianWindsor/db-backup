@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# exit on error
+set -e
+
 # check parameters
 source ./check_parameters.sh
 
