@@ -5,8 +5,11 @@ metadata:
 spec:
   # run at midnight pst
   schedule: "0 8 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
+      backoffLimit: 1
       template:
         spec:
           containers:
@@ -22,4 +25,4 @@ spec:
                     name: db-backup-myapp
                 - secretRef:
                     name: db-backup-myapp
-          restartPolicy: OnFailure
+          restartPolicy: Never
